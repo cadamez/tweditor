@@ -36,11 +36,12 @@ Paragraph
 </div>
 <script>
   var md = $('textarea#markdown');
-  md.markItUp(mySettings);
   var html = $('div#html');
   var convert = function() {
     html.html(marked($('textarea#markdown').val()));
   };
+  mySettings.previewFunction = convert;
+  md.markItUp(mySettings);
   md.on('change keyup paste', convert);
   convert();
 </script>

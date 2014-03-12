@@ -191,9 +191,7 @@
 					$.markItUp.focused = this;
 				});
 
-				if (options.previewInElement) {
-					refreshPreview();
-				}
+				refreshPreview();
 			}
 
 			// recursively build header with dropMenus from markupset
@@ -415,9 +413,7 @@
 				prepare(options.afterInsert);
 
 				// refresh preview if opened
-				if (previewWindow && options.previewAutoRefresh) {
-					refreshPreview(); 
-				}
+				refreshPreview(); 
 																									
 				// reinit keyevent
 				shiftKey = altKey = ctrlKey = abort = false;
@@ -522,9 +518,7 @@
 					}
 					previewWindow = iFrame = false;
 				}
-				if (!options.previewAutoRefresh) {
-					refreshPreview(); 
-				}
+				refreshPreview(); 
 				if (options.previewInWindow) {
 					previewWindow.focus();
 				}
@@ -536,37 +530,8 @@
 			}
 
 			function renderPreview() {
-				var phtml;
-				if (options.previewHandler && typeof options.previewHandler === 'function') {
-					options.previewHandler( $$.val() );
-				} else if (options.previewParser && typeof options.previewParser === 'function') {
-					var data = options.previewParser( $$.val() );
-					writeInPreview(localize(data, 1) ); 
-				} else if (options.previewParserPath !== '') {
-					$.ajax({
-						type: 'POST',
-						dataType: 'text',
-						global: false,
-						url: options.previewParserPath,
-						data: options.previewParserVar+'='+encodeURIComponent($$.val()),
-						success: function(data) {
-							writeInPreview( localize(data, 1) ); 
-						}
-					});
-				} else {
-					if (!template) {
-						$.ajax({
-							url: options.previewTemplatePath,
-							dataType: 'text',
-							global: false,
-							success: function(data) {
-								writeInPreview( localize(data, 1).replace(/<!-- content -->/g, $$.val()) );
-							}
-						});
-					}
-				}
-				return false;
-			}
+        options.previewFunction();  
+      }
 			
 			function writeInPreview(data) {
 				if (options.previewInElement) {
