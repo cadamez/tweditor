@@ -10,18 +10,28 @@
   <script type="text/javascript" src="markitup/sets/markdown/set.js"></script>
 
   <style>
-    div#edit-wrapper {
+    div#html.edit-mode {
+      display: none;
+    } 
+    div#markItUpMarkdown.view-mode {
+      display: none;
+    }
+    div#markItUpMarkdown.fullscreen {
       width: 48%;
+      height: 100%;
       float: left;
     }
-    div#html {
+    div#html.fullscreen {
       width:48%;
       float: right;
     }
   </style>  
 </head>
 <body>
-<div id="edit-wrapper"><textarea id="markdown">
+<div>
+  <a class="fullscreen">full screen</a> <a class="edit">edit mode</a> <a class="view">view mode</a>
+</div>
+<textarea id="markdown">
 #Header
 
 * Bullet
@@ -30,9 +40,8 @@
 Paragraph
 
 Paragraph
-
-</textarea></div>
-<div id="html">
+</textarea>
+<div id="html" class="view-mode">
 </div>
 <script>
   var md = $('textarea#markdown');
@@ -42,6 +51,20 @@ Paragraph
   };
   mySettings.previewFunction = convert;
   md.markItUp(mySettings);
+  mde = $('div#markItUpMarkdown');
+  mde.addClass('view-mode');
+  $('a.fullscreen').on('click', function(){
+    html.addClass('fullscreen').removeClass('edit-mode').removeClass('view-mode');
+    mde.addClass('fullscreen').removeClass('edit-mode').removeClass('view-mode');
+  });
+  $('a.edit').on('click', function(){
+    html.addClass('edit-mode').removeClass('fullscreen').removeClass('view-mode');
+    mde.addClass('edit-mode').removeClass('fullscreen').removeClass('view-mode');
+  });
+  $('a.view').on('click', function(){
+    html.addClass('view-mode').removeClass('fullscreen').removeClass('edit-mode');
+    mde.addClass('view-mode').removeClass('fullscreen').removeClass('edit-mode');
+  });
   md.on('change keyup paste', convert);
   convert();
 </script>
