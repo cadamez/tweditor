@@ -1,0 +1,48 @@
+<html>
+<head>
+  <script src="js/marked.js"></script>
+  <script src="js/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="markitup/skins/simple/style.css">
+  <!--  markItUp! toolbar skin -->
+  <link rel="stylesheet" type="text/css" href="markitup/sets/markdown/style.css">
+  <script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+  <!-- markItUp! toolbar settings -->
+  <script type="text/javascript" src="markitup/sets/markdown/set.js"></script>
+
+  <style>
+    div#edit-wrapper {
+      width: 48%;
+      float: left;
+    }
+    div#html {
+      width:48%;
+      float: right;
+    }
+  </style>  
+</head>
+<body>
+<div id="edit-wrapper"><textarea id="markdown">
+#Header
+
+* Bullet
+* Next
+
+Paragraph
+
+Paragraph
+
+</textarea></div>
+<div id="html">
+</div>
+<script>
+  var md = $('textarea#markdown');
+  md.markItUp(mySettings);
+  var html = $('div#html');
+  var convert = function() {
+    html.html(marked($('textarea#markdown').val()));
+  };
+  md.on('change keyup paste', convert);
+  convert();
+</script>
+</body>
+</html>
