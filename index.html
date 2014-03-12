@@ -25,10 +25,20 @@
       width:48%;
       float: right;
     }
+    div.menu {
+      background-color: #fff;
+    }
+    div.menu a.selected {
+      display:none;
+    }
+    div.menu a {
+      font-weight: bold;
+      background-color: #eee;
+    }
   </style>  
 </head>
 <body>
-<div>
+<div class="menu">
   <a class="fullscreen">full screen</a> <a class="edit">edit mode</a> <a class="view">view mode</a>
 </div>
 <textarea id="markdown">
@@ -53,17 +63,29 @@ Paragraph
   md.markItUp(mySettings);
   mde = $('div#markItUpMarkdown');
   mde.addClass('view-mode');
-  $('a.fullscreen').on('click', function(){
+  var fsb = $('a.fullscreen');
+  var eb = $('a.edit');
+  var vb =  $('a.view');
+  fsb.on('click', function(){
     html.addClass('fullscreen').removeClass('edit-mode').removeClass('view-mode');
     mde.addClass('fullscreen').removeClass('edit-mode').removeClass('view-mode');
+    fsb.addClass('selected');
+    eb.removeClass('selected');
+    vb.removeClass('selected');
   });
-  $('a.edit').on('click', function(){
+  eb.on('click', function(){
     html.addClass('edit-mode').removeClass('fullscreen').removeClass('view-mode');
     mde.addClass('edit-mode').removeClass('fullscreen').removeClass('view-mode');
+    eb.addClass('selected');
+    fsb.removeClass('selected');
+    vb.removeClass('selected');
   });
-  $('a.view').on('click', function(){
+  vb.on('click', function(){
     html.addClass('view-mode').removeClass('fullscreen').removeClass('edit-mode');
     mde.addClass('view-mode').removeClass('fullscreen').removeClass('edit-mode');
+    vb.addClass('selected');
+    fsb.removeClass('selected');
+    eb.removeClass('selected');
   });
   md.on('change keyup paste', convert);
   convert();
