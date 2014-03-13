@@ -35,6 +35,9 @@
       font-weight: bold;
       background-color: #eee;
     }
+    cursor:after {
+      content: "|";
+    }
   </style>  
 </head>
 <body>
@@ -57,7 +60,15 @@ Paragraph
   var md = $('textarea#markdown');
   var html = $('div#html');
   var convert = function() {
-    html.html(marked($('textarea#markdown').val()));
+    html.html(marked(md.val()));
+    (function () {
+      var tokens = marked.lexer(md.val());
+      console.log(marked.parser(tokens));
+      var lexer = new marked.Lexer();
+      var tokens = lexer.lex(md.val());
+      console.log(tokens);
+      console.log(lexer.rules);
+    })();
   };
   mySettings.previewFunction = convert;
   md.markItUp(mySettings);
