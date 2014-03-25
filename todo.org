@@ -1,0 +1,19 @@
+* TODO Improve UX/UI
+  * Move menu to above cursor on selection
+  * Hide menu like task bar when not hovered
+  * Make buttons lineup and improve controls look.
+  * Make split screen look like a full window dialog
+  * Make edit and view area same size and positioning as original element its bound to.
+  * Make it work with both textarea and div with contents.
+* TODO Add Missing block elements
+  * Blockquotes
+  * Bulleted lists
+  * Numbered lists
+* TODO Add Missing inline elements
+  * Bold italic(both selected)
+  * Link Dialog
+  * Image Dialog
+* Highlight Buttons based off of current line/char selection.
+* Improve lexer support so that buttons work cleanly.
+* Add custom parser to `tweditor(content, option)`
+
