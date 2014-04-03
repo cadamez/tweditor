@@ -1,9 +1,9 @@
-/*div.tweditor.edit-mode div.html {
+div.tweditor.edit-mode div.html {
     display: none;
 } 
 div.tweditor.view-mode div.markdown {
     display: none;
-}*/
+}
 div.tweditor.fullscreen div.markdown {
     width: 48%;
     height: 100%;
@@ -26,13 +26,11 @@ ul.tweditorMenu {
     padding: 0px;
 }
 div.tweditor.fullscreen li.splitScreenButton, div.tweditor.edit-mode li.editModeButton, div.tweditor.view-mode li.viewModeButton { 
-    background-color: #eee;
 }
 ul.tweditorMenu li {
     display: inline;
     margin: 5px 0px;
     padding: 0px 10px;
-    font-size: 25px;
 }
 div.tweditor.view-mode li.seperator {
     display: none;
@@ -40,10 +38,11 @@ div.tweditor.view-mode li.seperator {
 div.tweditor.view-mode li.editButton {
     display: none;
 }
-div.tweditor li.editButton {
+.tweditor .tweditorMenu button {
+    background-color: #eee;
     border-radius: 0.2em;
-    border: solid 1px;
-    font-size: 15px;
+    border: 1px solid #dedede;
+    font-size: 25px;
     padding: 5px 9px 5px 9px;
     margin: 3px;
 }
