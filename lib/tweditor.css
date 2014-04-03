@@ -1,9 +1,9 @@
-div.tweditor.edit-mode div.html {
+/*div.tweditor.edit-mode div.html {
     display: none;
 } 
 div.tweditor.view-mode div.markdown {
     display: none;
-}
+}*/
 div.tweditor.fullscreen div.markdown {
     width: 48%;
     height: 100%;
