@@ -1,8 +1,19 @@
 div.tweditor.edit-mode div.html {
     display: none;
 } 
-div.tweditor.view-mode div.markdown {
+div.tweditor.view-mode div.markdown,
+div.tweditor.view-mode li.seperator,
+div.tweditor.view-mode button[data-tw-action='bold'],
+div.tweditor.view-mode button[data-tw-action='italic'],
+div.tweditor.view-mode .headerDropDown 
+{
     display: none;
+}
+div.tweditor.view-mode button[data-tw-action='view'],
+div.tweditor.edit-mode button[data-tw-action='edit'],
+div.tweditor.fullscreen button[data-tw-action='splitScreen']
+{
+	background-color: cornflowerblue;
 }
 div.tweditor.fullscreen div.markdown {
     width: 48%;
@@ -25,18 +36,10 @@ ul.tweditorMenu {
     list-style-type: none;
     padding: 0px;
 }
-div.tweditor.fullscreen li.splitScreenButton, div.tweditor.edit-mode li.editModeButton, div.tweditor.view-mode li.viewModeButton { 
-}
 ul.tweditorMenu li {
     display: inline;
     margin: 5px 0px;
     padding: 0px 10px;
-}
-div.tweditor.view-mode li.seperator {
-    display: none;
-}
-div.tweditor.view-mode li.editButton {
-    display: none;
 }
 .tweditor .tweditorMenu button {
     background-color: #eee;
